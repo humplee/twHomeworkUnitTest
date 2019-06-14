@@ -20,4 +20,8 @@ public class AnswerTest {
     public void should_the_number_be_judged_correctly_one(){
         assertThat(answer.check(Answer.createAnswer("1 2 3 4")).getValue(),is("1A1B"));
     }
+    @Test
+    public void should_the_number_be_judged_correctly_two(){
+        assertThat(answer.check(Answer.createAnswer("1 3 5 6")).getValue(),is("4A0B"));
+    }
 }
