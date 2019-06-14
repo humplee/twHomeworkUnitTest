@@ -24,4 +24,9 @@ public class AnswerTest {
     public void should_the_number_be_judged_correctly_two(){
         assertThat(answer.check(Answer.createAnswer("1 3 5 6")).getValue(),is("4A0B"));
     }
+    @Test
+    public void should_the_number_be_judged_correctly_three(){
+        assertThat(answer.check(Answer.createAnswer("7 8 9 0")).getValue(),is("0A0B"));
+    }
+
 }
