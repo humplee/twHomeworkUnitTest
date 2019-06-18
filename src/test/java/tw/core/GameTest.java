@@ -27,12 +27,29 @@ public class GameTest {
     }
     
     @Test
-    public void Game_Test() throws OutOfRangeAnswerException {
+    public void Game_State_Test_Success() throws OutOfRangeAnswerException {
         game.guess(Answer.createAnswer("1 3 4 5"));
         game.guess(Answer.createAnswer("2 5 8 0"));
         game.guess(Answer.createAnswer("2 5 8 1"));
-        game.guess(Answer.createAnswer("1 2 3 4"));
         String gameState = game.checkStatus();
+        assertThat(gameState,is("continue"));
+        Boolean continueFlag = game.checkCoutinue();
+        assertThat(continueFlag,is(true));
+        game.guess(Answer.createAnswer("1 2 3 4"));
+        gameState = game.checkStatus();
         assertThat(gameState,is("success"));
+    }
+    @Test
+    public void Game_State_Test_Fail() throws OutOfRangeAnswerException {
+        game.guess(Answer.createAnswer("1 3 4 5"));
+        game.guess(Answer.createAnswer("2 5 8 0"));
+        game.guess(Answer.createAnswer("2 5 8 1"));
+        game.guess(Answer.createAnswer("1 2 3 5"));
+        game.guess(Answer.createAnswer("1 2 3 5"));
+        game.guess(Answer.createAnswer("1 2 3 5"));
+        String gameState = game.checkStatus();
+        assertThat(gameState,is("fail"));
+        Boolean continueFlag = game.checkCoutinue();
+        assertThat(continueFlag,is(false));
     }
 }
