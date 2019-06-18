@@ -63,6 +63,6 @@ public class GameControllerTest {
         verify(mockGameView).showGuessResult(any());
         verify(mockGameView).showGuessHistory(anyList());
         verify(mockGameView).showGameStatus(anyString());
-        //methods above are referencing answer.md 
+        //methods above are referencing answer.md
     }
 }
